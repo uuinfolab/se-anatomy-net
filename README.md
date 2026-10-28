@@ -1,4 +1,4 @@
-# Multilayer register network
+# Anatomy of a Swedish population-scale network
 
 Material for constructing the multilayer population-scale network for the paper "Anatomy of a Swedish population-scale network". Link: <https://doi.org/10.1038/s41598-025-15966-x>
 
@@ -32,12 +32,12 @@ Using the default hard-coded paths, the expected folder layout is:
 ```
 
 
-## Step by step (year 2017)
+## Step by step (example for year 2017)
 
 Run everything from `code/`:
 
 ```
-cd <root>/<project>/code
+cd <project>/code
 ```
 
 ### 1. Family layer
@@ -48,6 +48,7 @@ python family_layer.py ../family_out family_files.txt 2017 LopNr LopNr_FamId
 ```
 
 Arguments: `<output_folder> <file_list> <begin_year> <personnr_var> <famid_var>`.
+
 Output: `../family_out/family_layer2017/final_network2017.csv`, plus `.pkl` files.
 
 > Parent and child links build up over the years in the file list. Each year reads the
@@ -63,7 +64,6 @@ python neighbourhood_layer.py LopNr <PROPERTY_VAR> <PROPERTY_VAR_2000> 2017 nbr_
 ```
 
 Arguments: `<personnr_var> <property_var> <property_var_for_2000> <begin_year> <file_list> <output_folder>`.
-The third argument is only used for the year 2000, but you must still pass something.
 
 Output: `../results2/neighbourhood2017.csv`
 
@@ -85,11 +85,10 @@ Example usage:
 python work2_layer.py work_files.txt 2017 ../results2
 ```
 
-Arguments: `<file_list> <begin_year> <output_folder>`. The column names are fixed in the script.
+Arguments: `<file_list> <begin_year> <output_folder>`.
 
 Output: `../results2/work2017.csv`
 
-Steps 2–4 don't depend on each other and can run in any order.
 
 ### 5. Rename and move
 
@@ -156,7 +155,5 @@ filtered_edgelist_work_2017.csv
 - Edges are directed and can appear more than once (A->B and B->A). Deduplicate them if
   you need a simple undirected graph.
 
-## Contact
 
-(add notes here)
 
